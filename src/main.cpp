@@ -145,6 +145,15 @@ struct Bullet : public sf::Drawable {
         //      - lifetime <= 0.0f, or
         //      - bullet is off screen (use shape.getPosition() and
         //        WINDOW_WIDTH and WINDOW_HEIGHT)
+
+        shape.move(velocity);
+        lifetime -= 1.0f / 60.0f;
+        sf::Vector2f bulletPos = shape.getPosition();
+        if (bulletPos.x < -BULLET_RADIUS || bulletPos.x > WINDOW_WIDTH + BULLET_RADIUS ||
+            bulletPos.y < -BULLET_RADIUS || bulletPos.y > WINDOW_HEIGHT + BULLET_RADIUS ||
+            lifetime <= 0.0f) {
+            isAlive = false;
+        }
     }
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
