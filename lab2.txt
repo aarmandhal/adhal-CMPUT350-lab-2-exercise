@@ -1,9 +1,13 @@
 Answer written questions 1 and 2 here.
 
 Q1:
-In SFML the origin is the top left corner where a positive x values moves right, while a positive y
+In SFML the origin is the top left corner where a positive x value moves right, while a positive y
 value moves down. Vertically this is opposite of what usually occurs in math. Another difference I 
 found was that angles increase clockwise rather than counter clockwise as it does traditionally.  For
-example 90 degees points down instead of up.
+example 90 degrees points down instead of up.
 
 Q2:
+The main benefit is that we separate what the player is asking for from what actually happens in the 
+game. By separating reading input from acting on it, the update logic depends on its own state 
+and a plain struct, not on live hardware. This makes the game easier to test, since we can 
+construct InputSummary values by hand and run the simulation without a window.
